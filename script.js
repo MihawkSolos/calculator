@@ -69,7 +69,68 @@ const minBtn = document.querySelector('.minus');
 const mulBtn = document.querySelector('.multiply');
 const divBtn = document.querySelector('.divide');
 const eqBtn = document.querySelector('.equal');
+const clearBtn = document.querySelector('.clear');
 
 btn1.addEventListener('click', () => {
     displayDiv.textContent += '1';
+})
+
+btn2.addEventListener('click', () => {
+    displayDiv.textContent += '2';
+})
+
+btn3.addEventListener('click', () => {
+    displayDiv.textContent += '3';
+})
+
+btn4.addEventListener('click', () => {
+    displayDiv.textContent += '4';
+})
+
+btn5.addEventListener('click', () => {
+    displayDiv.textContent += '5';
+})
+
+btn6.addEventListener('click', () => {
+    displayDiv.textContent += '6';
+})
+
+btn7.addEventListener('click', () => {
+    displayDiv.textContent += '7';
+})
+
+btn8.addEventListener('click', () => {
+    displayDiv.textContent += '8';
+})
+
+btn9.addEventListener('click', () => {
+    displayDiv.textContent += '9';
+})
+
+btn0.addEventListener('click', () => {
+    displayDiv.textContent += '0';
+})
+
+plusBtn.addEventListener('click', () => {
+    displayDiv.textContent += ' + ';
+})
+
+minBtn.addEventListener('click', () => {
+    displayDiv.textContent += ' - ';
+})
+
+mulBtn.addEventListener('click', () => {
+    displayDiv.textContent += ' * ';
+})
+
+divBtn.addEventListener('click', () => {
+    displayDiv.textContent += ' / ';
+})
+
+eqBtn.addEventListener('click', () => {
+    displayDiv.textContent += '=';
+})
+
+clearBtn.addEventListener('click', () => {
+    displayDiv.textContent = '';
 })
