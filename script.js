@@ -20,22 +20,24 @@ function divide (num1, num2){
 
 // operate function
 function operate (op, num1, num2){
+    let result = 0;
     switch(op) {
         case '+':
-            add(num1, num2);
+            result = add(num1, num2);
             break;
         case '-':
-            subtract(num1,num2);
+            result = subtract(num1,num2);
             break;
         case '*':
-            multiply(num1,num2);
+            result = multiply(num1,num2);
             break;
         case '/':
-            divide(num1,num2);
+            result = divide(num1,num2);
             break;
         default: 
             alert('Invalid, please try again.');
     }
+    return result;
 }
 
 /* Test
@@ -48,6 +50,7 @@ console.log(divide(30,5));
 let num1;
 let op;
 let num2;
+let result = 0;
 
 let displayDiv = document.querySelector('.display');
 displayDiv.classList.add('text');
@@ -112,23 +115,34 @@ btn0.addEventListener('click', () => {
 })
 
 plusBtn.addEventListener('click', () => {
+    num1 = parseInt(displayDiv.textContent);
+    op = '+';
     displayDiv.textContent += ' + ';
 })
 
 minBtn.addEventListener('click', () => {
+    num1 = parseInt(displayDiv.textContent);
+    op = '-';
     displayDiv.textContent += ' - ';
 })
 
 mulBtn.addEventListener('click', () => {
+    num1 = parseInt(displayDiv.textContent);
+    op = '*';
     displayDiv.textContent += ' * ';
 })
 
 divBtn.addEventListener('click', () => {
+    num1 = parseInt(displayDiv.textContent);
+    op = '/';
     displayDiv.textContent += ' / ';
 })
 
 eqBtn.addEventListener('click', () => {
-    displayDiv.textContent += '=';
+    num2 = displayDiv.textContent;
+    num2 = parseInt(num2.slice(num2.indexOf(op + 1)));
+    result = operate(op, num1, num2);
+    displayDiv.textContent = result;
 })
 
 clearBtn.addEventListener('click', () => {
