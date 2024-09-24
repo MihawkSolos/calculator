@@ -40,6 +40,8 @@ function operate (op, num1, num2){
     return result;
 }
 
+
+
 /* Test
 console.log(add(2,4));
 console.log(subtract(5,2));
@@ -114,37 +116,73 @@ btn0.addEventListener('click', () => {
     displayDiv.textContent += '0';
 })
 
+
 plusBtn.addEventListener('click', () => {
     num1 = parseInt(displayDiv.textContent);
     op = '+';
     displayDiv.textContent += ' + ';
+    if(checkNum(num1)){
+        alert('Please enter a number.');
+        displayDiv.textContent = '';
+    }
 })
 
 minBtn.addEventListener('click', () => {
     num1 = parseInt(displayDiv.textContent);
     op = '-';
     displayDiv.textContent += ' - ';
+    if(checkNum(num1)){
+        alert('Please enter a number.');
+        displayDiv.textContent = '';
+    }
 })
 
 mulBtn.addEventListener('click', () => {
     num1 = parseInt(displayDiv.textContent);
     op = '*';
     displayDiv.textContent += ' * ';
+    if(checkNum(num1)){
+        alert('Please enter a number.');
+        displayDiv.textContent = '';
+    }
 })
 
 divBtn.addEventListener('click', () => {
     num1 = parseInt(displayDiv.textContent);
     op = '/';
     displayDiv.textContent += ' / ';
+    if(checkNum(num1)){
+        alert('Please enter a number.');
+        displayDiv.textContent = '';
+    }
 })
 
 eqBtn.addEventListener('click', () => {
+    
     num2 = displayDiv.textContent;
     num2 = parseInt(num2.slice(num2.indexOf(op + 1)));
-    result = operate(op, num1, num2);
-    displayDiv.textContent = result;
+    if(checkNum(num2)){
+        alert('Please enter a number.');
+        displayDiv.textContent = '';
+    }
+    else if(op === '/' && num2 === 0){
+        displayDiv.textContent = '';
+        alert('Error, cannot divide by zero!');
+    } 
+    else {
+        result = operate(op, num1, num2);
+        displayDiv.textContent = result;
+    }
+    
 })
 
 clearBtn.addEventListener('click', () => {
     displayDiv.textContent = '';
 })
+
+
+
+// check if num1 and num2 are empty 
+function checkNum(num) {
+    return isNaN(num) ? true: false;
+}
