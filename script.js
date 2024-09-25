@@ -15,7 +15,7 @@ function multiply (num1, num2){
 
 // divide function
 function divide (num1, num2){
-    return num1 / num2;
+    return Math.round((num1 / num2) * 100) / 100;
 }
 
 // operate function
@@ -118,7 +118,7 @@ btn0.addEventListener('click', () => {
 
 
 plusBtn.addEventListener('click', () => {
-    num1 = parseInt(displayDiv.textContent);
+    num1 = parseFloat(displayDiv.textContent);
     if(op === ''){
         op = '+';
         displayDiv.textContent += ' + ';
@@ -131,7 +131,7 @@ plusBtn.addEventListener('click', () => {
 })
 
 minBtn.addEventListener('click', () => {
-    num1 = parseInt(displayDiv.textContent);
+    num1 = parseFloat(displayDiv.textContent);
     if(op === ''){
         op = '-';
         displayDiv.textContent += ' - ';
@@ -144,7 +144,7 @@ minBtn.addEventListener('click', () => {
 })
 
 mulBtn.addEventListener('click', () => {
-    num1 = parseInt(displayDiv.textContent);
+    num1 = parseFloat(displayDiv.textContent);
     if(op === ''){
         op = '*';
         displayDiv.textContent += ' * ';
@@ -157,7 +157,7 @@ mulBtn.addEventListener('click', () => {
 })
 
 divBtn.addEventListener('click', () => {
-    num1 = parseInt(displayDiv.textContent);
+    num1 = parseFloat(displayDiv.textContent);
     if(op === ''){
         op = '/';
         displayDiv.textContent += ' / ';
@@ -170,24 +170,29 @@ divBtn.addEventListener('click', () => {
 })
 
 eqBtn.addEventListener('click', () => {
+    // Find the operator's index
+    const operatorIndex = displayDiv.textContent.indexOf(op);
     
-    num2 = displayDiv.textContent;
-    num2 = parseInt(num2.slice(num2.indexOf(op + 1)));
-    if(checkNum(num2)){
+    // Extract num2 from the string
+    if (operatorIndex !== -1) {
+        num2 = parseFloat(displayDiv.textContent.slice(operatorIndex + 2).trim());
+    }
+
+    if (checkNum(num2)) {
         alert('Please enter a number.');
         displayDiv.textContent = '';
-    }
-    else if(op === '/' && num2 === 0){
+    } else if (op === '/' && num2 === 0) {
         displayDiv.textContent = '';
         alert('Error, cannot divide by zero!');
-    } 
-    else {
+    } else {
         result = operate(op, num1, num2);
         displayDiv.textContent = result;
+        // Reset states
+        num1 = result;
         op = '';
     }
-    
-})
+});
+
 
 clearBtn.addEventListener('click', () => {
     displayDiv.textContent = '';
